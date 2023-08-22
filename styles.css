@@ -1,0 +1,14 @@
+body{
+    width: 100vw
+}
+ul{
+    width: 100vw
+}
+
+.form{
+    width: 50vw;
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid black; /* Change the border color to black */
+}
