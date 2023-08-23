@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 document.getElementById('upload-form').addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -9,27 +11,29 @@ document.getElementById('upload-form').addEventListener('submit', async (event) 
     }
 });
 
-async function uploadFile(file) {
-    const formData = new FormData();
-    formData.append('file', file);
-    console.log(formData)
+const clientId = 'YOUR_CLIENT_ID'; // Replace with your actual client ID
 
-    const responseHeaders = {
-        "Access-Control-Allow-Origin": "*", // Allow requests from any origin (you can restrict this to specific origins)
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "OPTIONS,POST" // Adjust based on the allowed HTTP methods
-      };
+async function uploadImage(imageData) {
+  const url = 'https://api.imgur.com/3/upload';
+  const headers = {
+    Authorization: `Client-ID ${clientId}`,
+    'Content-Type': 'multipart/form-data',
+  };
 
-    try {
-        const response = await fetch('https://hgfmziogr7.execute-api.eu-west-1.amazonaws.com/default/addImageCyberman', {
-            method: 'POST',
-            headers: responseHeaders,
-            body: formData
-        });
+  const formData = new FormData();
+  formData.append('image', imageData);
 
-        const result = await response.json();
-        console.log(result);
-    } catch (error) {
-        console.error('Error uploading file:', error);
-    }
+  try {
+    const response = await axios.post(url, formData, { headers });
+    console.log('Image uploaded to Imgur:', response.data);
+    return response.data.data.link;
+  } catch (error) {
+    console.error('Error uploading image to Imgur:', error);
+    return null;
+  }
 }
+
+// Usage example
+const fs = require('fs');
+const imageBuffer = fs.readFileSync('path/to/your/image.jpg');
+uploadImage(imageBuffer);
