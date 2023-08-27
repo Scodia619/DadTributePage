@@ -1,9 +1,0 @@
-.*
-
-Makefile
-appveyor.yml
-sftp-config.json
-
-coverage/
-node_modules/
-test/
