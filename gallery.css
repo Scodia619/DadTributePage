@@ -19,6 +19,30 @@ body {
     border-radius: 10px;
     cursor: pointer;
   }
+
+  @media (max-width: 767px) {
+    .gallery-image {
+      width: calc(50% - 10px); /* Two images in a row */
+      height: auto; /* Auto height for responsiveness */
+      float: left;
+      box-sizing: border-box;
+    }
+  
+    /* Clear the float on mobile */
+    .gallery-container::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  
+    /* Adjust modal size for mobile */
+    .modal-image-container {
+      max-width: 90%;
+      max-height: 90vh;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+  }
   
   .modal {
     display: none;
