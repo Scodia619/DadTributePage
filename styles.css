@@ -12,3 +12,21 @@ ul{
 .nav-tabs .nav-link {
     border: 1px solid black; /* Change the border color to black */
 }
+/* Add the following media query for mobile devices */
+@media (max-width: 767px) {
+    .nav.nav-tabs {
+      flex-direction: row; /* Display items in a row on mobile */
+      justify-content: space-between; /* Distribute items evenly */
+    }
+  
+    .nav.nav-tabs li.nav-item {
+      flex: 1; /* Distribute available space evenly among items */
+      text-align: center; /* Center-align text on mobile */
+      padding: 0; /* Remove padding for mobile styling */
+    }
+  
+    .nav.nav-tabs li.nav-item a.nav-link {
+      padding: 10px 0; /* Add padding to create space between links */
+    }
+  }
+  
