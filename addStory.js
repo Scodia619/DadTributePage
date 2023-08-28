@@ -1,7 +1,7 @@
 function submitStory() {
     // This is where you can handle the form submission
     // For example, you can get the values of the inputs and perform actions
-    if(sessionStorage.getItem("name")){
+    if(sessionStorage.getItem("user")){
       createHash();
 
       let currentId = parseInt(sessionStorage.getItem("length"));
